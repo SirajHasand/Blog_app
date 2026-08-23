@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="bg-gray-100 p-4 rounded-lg shadow-md flex gap-6">
+<div class="bg-slate-900 p-4 rounded-lg shadow-md flex gap-6">
     <div class="w-1/4">
             <img src="{{asset('upload/'.$post->image)}}"
                  alt="{{$post->image}}"

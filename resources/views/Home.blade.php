@@ -4,95 +4,342 @@
 
 @section('content')
 
-<!-- ===== HERO SECTION ===== -->
-<section class="relative bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-2xl overflow-hidden shadow-2xl mb-12">
-    {{-- Hero Background Image --}}
-    <div class="absolute inset-0 opacity-20">
-        <img src="upload/cover.jpg"
-             alt="Hero Background"
-             class="w-full h-full object-cover">
+{{-- ================= HERO ================= --}}
+<section class="relative overflow-hidden rounded-3xl bg-slate-950 shadow-2xl mb-16">
+
+    {{-- Background --}}
+    <div class="absolute inset-0">
+        <img
+            src="{{ asset('upload/cover.jpg') }}"
+            alt="Blog Cover"
+            class="w-full h-full object-cover opacity-30"
+        >
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-950/90 to-blue-950/80"></div>
     </div>
 
-    <div class="relative z-10 px-8 py-16 md:py-24 md:px-16 text-center md:text-left">
+    {{-- Decorative circles --}}
+    <div class="absolute -top-24 -right-24 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-32 -left-20 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl"></div>
+
+    <div class="relative z-10 px-6 py-20 md:px-16 md:py-28">
+
         <div class="max-w-3xl">
-            <span class="inline-block bg-white/20 backdrop-blur-sm text-white text-sm font-semibold px-4 py-1 rounded-full mb-4">
-                 Welcome to My Blog
-            </span>
-            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">
-                {{ $page }} Page
+
+            {{-- Badge --}}
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full
+                        bg-white/10 border border-white/10 backdrop-blur-md
+                        text-blue-300 text-sm font-medium mb-6">
+
+                <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+
+                Welcome to My Blog
+            </div>
+
+            {{-- Heading --}}
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black
+                       tracking-tight text-white leading-tight mb-6">
+
+                Ideas worth
+                <span class="text-transparent bg-clip-text bg-gradient-to-r
+                             from-blue-400 to-indigo-400">
+                    reading.
+                </span>
+
             </h1>
-            <p class="text-lg md:text-xl text-white/90 mb-6 max-w-2xl">
-                Discover insightful articles, latest updates, and stories from our community.
+
+            <p class="text-lg md:text-xl text-slate-300 leading-relaxed
+                      max-w-2xl mb-8">
+
+                Discover articles, programming tutorials, technology insights,
+                development stories and ideas from my journey as a developer.
+
             </p>
-            <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+
+            {{-- Buttons --}}
+            <div class="flex flex-wrap gap-4">
+
                 <a href="{{ route('post') }}"
-                   class="bg-white text-blue-600 font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                    📖 View All Posts
+                   class="inline-flex items-center gap-2
+                          bg-blue-600 hover:bg-blue-500
+                          text-white font-semibold
+                          px-6 py-3.5 rounded-xl
+                          shadow-lg shadow-blue-600/20
+                          transition-all duration-300
+                          hover:-translate-y-1">
+
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+
+                    Explore Articles
                 </a>
+
                 <a href="#latest"
-                   class="border-2 border-white/50 text-white font-semibold px-8 py-3 rounded-full hover:bg-white/10 transition-all duration-300">
-                    Browse Topics
+                   class="inline-flex items-center gap-2
+                          bg-white/10 hover:bg-white/15
+                          border border-white/10
+                          text-white font-semibold
+                          px-6 py-3.5 rounded-xl
+                          backdrop-blur-md
+                          transition-all duration-300">
+
+                    Latest Posts
+
+                    <i data-lucide="arrow-down" class="w-4 h-4"></i>
+
                 </a>
+
             </div>
+
         </div>
+
     </div>
 </section>
 
-<!-- ===== FEATURED POSTS ===== -->
-<section id="latest" class="mb-12">
-    
-    
-    <div class="flex items-center justify-between mb-6">
-        <h2 class="text-2xl font-bold text-gray-800">🔥 Featured Posts</h2>
-        <a href="{{ route('post') }}" class="text-blue-600 hover:text-blue-800 font-medium">
-            View all →
+
+{{-- ================= FEATURED POSTS ================= --}}
+<section id="latest" class="mb-16">
+
+    {{-- Section Header --}}
+    <div class="flex flex-col sm:flex-row sm:items-end
+                justify-between gap-4 mb-8">
+
+        <div>
+
+            <div class="flex items-center gap-2 mb-2">
+
+                <span class="w-8 h-[2px] bg-blue-600"></span>
+
+                <span class="text-sm font-semibold text-blue-600 uppercase tracking-wider">
+                    Latest
+                </span>
+
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-black text-slate-900">
+                Featured Articles
+            </h2>
+
+            <p class="text-slate-500 mt-2">
+                Explore my latest thoughts, tutorials and stories.
+            </p>
+
+        </div>
+
+        <a href="{{ route('post') }}"
+           class="inline-flex items-center gap-2
+                  text-blue-600 font-semibold
+                  hover:text-blue-700 transition">
+
+            View all
+
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+
         </a>
+
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        @if(!isset($posts) || count($posts) === 0)
-    <p class="text-gray-600">No posts available.</p>
-     @endif
-       
-  @foreach($posts as $post)
-        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            <img src="{{asset('upload/'.$post->image)}}"
-                 alt="{{$post->image}}"
-                 class="w-full h-48 object-cover">
-            <div class="p-5">
-                <span class="text-xs font-semibold text-blue-600 uppercase">Category</span>
-                <h3 class="text-lg font-bold text-gray-800 mt-1">{{ $post['title'] }}</h3>
-                <p class="text-gray-600 text-sm mt-2">@php echo substr($post->content,0,80) @endphp...</p>
-                <a href="{{route('show',['slug'=>$post->slug])}}" class="text-blue-600 font-medium text-sm mt-3 inline-block hover:underline">
-                    Read More →
-                </a>
+
+    {{-- Posts --}}
+    @if(!isset($posts) || count($posts) === 0)
+
+        <div class="bg-gradient-to-br from-slate-800 to-slate-600 border border-slate-200 rounded-2xl
+                    p-12 text-center">
+
+            <div class="w-14 h-14 mx-auto mb-4
+                        flex items-center justify-center
+                        rounded-full bg-slate-100">
+
+                <i data-lucide="file-text"
+                   class="w-7 h-7 text-slate-400"></i>
+
             </div>
-        </div>
-    @endforeach 
 
-    </div>
+            <h3 class="text-lg font-bold text-slate-800">
+                No posts yet
+            </h3>
+
+            <p class="text-slate-600 mt-1">
+                Check back soon for new articles.
+            </p>
+
+        </div>
+
+    @else
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+
+            @foreach($posts as $post)
+
+                <article
+                    class="group bg-gradient-to-br from-slate-800 to-slate-600 rounded-2xl overflow-hidden
+                           border border-slate-200
+                           shadow-sm hover:shadow-2xl
+                           hover:-translate-y-1
+                           transition-all duration-300">
+
+                    {{-- Image --}}
+                    <div class="relative h-56 overflow-hidden">
+
+                        <img
+                            src="{{ asset('upload/'.$post->image) }}"
+                            alt="{{ $post->title }}"
+                            class="w-full h-full object-cover
+                                   group-hover:scale-105
+                                   transition-transform duration-500"
+                        >
+
+                        {{-- Gradient --}}
+                        <div class="absolute inset-0
+                                    bg-gradient-to-t
+                                    from-black/50
+                                    to-transparent">
+                        </div>
+
+                        {{-- Category --}}
+                        <span class="absolute top-4 left-4
+                                     px-3 py-1.5
+                                     rounded-full
+                                     bg-white/90 backdrop-blur
+                                     text-xs font-bold
+                                     text-blue-600">
+
+                            Technology
+
+                        </span>
+
+                    </div>
+
+
+                    {{-- Content --}}
+                    <div class="p-6">
+
+                        {{-- Meta --}}
+                        <div class="flex items-center gap-4
+                                    text-xs text-slate-400 mb-3">
+
+                            <span class="flex items-center gap-1">
+
+                                <i data-lucide="calendar"
+                                   class="w-3.5 h-3.5"></i>
+
+                                {{ $post->created_at?->format('M d, Y') }}
+
+                            </span>
+
+                            <span class="flex items-center gap-1">
+
+                                <i data-lucide="clock"
+                                   class="w-3.5 h-3.5"></i>
+
+                                5 min read
+
+                            </span>
+
+                        </div>
+
+
+                        {{-- Title --}}
+                        <h3 class="text-xl font-bold
+                                   text-slate-200
+                                   leading-snug
+                                   group-hover:text-blue-600
+                                   transition-colors">
+
+                            {{ $post->title }}
+
+                        </h3>
+
+
+                        {{-- Description --}}
+                        <p class="text-slate-400 text-sm
+                                  leading-relaxed mt-3">
+
+                            {{ Str::limit($post->content, 110) }}
+
+                        </p>
+
+
+                        {{-- Read More --}}
+                        <a href="{{ route('show', ['slug' => $post->slug]) }}"
+                           class="inline-flex items-center gap-2
+                                  mt-5
+                                  text-sm font-bold
+                                  text-blue-600
+                                  hover:text-blue-700">
+
+                            Read article
+
+                            <i data-lucide="arrow-up-right"
+                               class="w-4 h-4
+                                      group-hover:translate-x-1
+                                      group-hover:-translate-y-1
+                                      transition-transform">
+                            </i>
+
+                        </a>
+
+                    </div>
+
+                </article>
+
+            @endforeach
+
+        </div>
+
+    @endif
+
 </section>
 
-<!-- ===== STATS / SOCIAL PROOF (Optional) ===== -->
-<section class="bg-gray-50 rounded-2xl p-8 text-center">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <div>
-            <p class="text-3xl font-bold text-blue-600">500+</p>
-            <p class="text-gray-600 text-sm">Articles</p>
-        </div>
-        <div>
-            <p class="text-3xl font-bold text-blue-600">10K</p>
-            <p class="text-gray-600 text-sm">Readers</p>
-        </div>
-        <div>
-            <p class="text-3xl font-bold text-blue-600">50+</p>
-            <p class="text-gray-600 text-sm">Categories</p>
-        </div>
-        <div>
-            <p class="text-3xl font-bold text-blue-600">4.9★</p>
-            <p class="text-gray-600 text-sm">Rating</p>
-        </div>
+
+{{-- ================= CTA ================= --}}
+<section class="relative overflow-hidden rounded-3xl
+                bg-gradient-to-br from-blue-300 to-indigo-900
+                px-6 py-14 md:px-12
+                text-center text-white mb-12">
+
+    <div class="absolute -top-20 -right-20
+                w-64 h-64 rounded-full
+                bg-white/10 blur-3xl">
     </div>
+
+    <div class="relative">
+
+        <div class="w-14 h-14 mx-auto mb-5
+                    flex items-center justify-center
+                    rounded-2xl bg-white/10">
+
+            <i data-lucide="pen-line"
+               class="w-7 h-7">
+            </i>
+
+        </div>
+
+        <h2 class="text-3xl md:text-4xl font-black mb-4">
+            Keep learning. Keep building.
+        </h2>
+
+        <p class="text-blue-100 max-w-xl mx-auto mb-7">
+            Explore more articles and follow along as I share
+            my development journey, projects and lessons learned.
+        </p>
+
+        <a href="{{ route('post') }}"
+           class="inline-flex items-center gap-2
+                  bg-white text-blue-700
+                  font-bold px-6 py-3
+                  rounded-xl
+                  hover:bg-blue-50
+                  transition">
+
+            Browse Articles
+
+            <i data-lucide="arrow-right"
+               class="w-5 h-5">
+            </i>
+
+        </a>
+
+    </div>
+
 </section>
 
 @endsection

@@ -15,7 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('Admin.index')
+        return view('dashboard')
         ->with('page',"Admin")
         ->with('posts',Post::all());
     }
@@ -24,7 +24,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('Admin.create')
+        return view('Admin.Create')
         ->with('page',"Create Post");
     }
 
@@ -60,7 +60,7 @@ class AdminController extends Controller
             'image'=> $image_new_name,
             'slug' => Str::slug($request->title)
         ]);
-        return redirect()->route('admin.index')->with('success', 'Post created successfully.');
+        return redirect()->route('dashboard')->with('success', 'Post created successfully.');
     }
 
     /**
@@ -120,7 +120,7 @@ class AdminController extends Controller
         ]);
 
 
-        return redirect()->route('admin.index')->with('success', 'Post updated successfully.');
+        return redirect()->route('dashboard')->with('success', 'Post updated successfully.');
     }
 
     /**
@@ -131,6 +131,6 @@ class AdminController extends Controller
         unlink('upload/'.$admin->image);
         $admin->delete();
 
-        return redirect()->route('admin.index')->with('success', 'Post deleted successfully.');
+        return redirect()->route('dashboard')->with('success', 'Post deleted successfully.');
     }
 }
