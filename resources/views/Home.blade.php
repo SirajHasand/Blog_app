@@ -10,7 +10,7 @@
     {{-- Background --}}
     <div class="absolute inset-0">
         <img
-            src="{{ asset('upload/cover.jpg') }}"
+            src="{{ asset('upload/bg.jpg')}}"
             alt="Blog Cover"
             class="w-full h-full object-cover opacity-30"
         >

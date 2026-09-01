@@ -42,7 +42,8 @@
                         </p>
                     </div>
 
-                    {{-- Create Button --}}
+                    {{--  Button --}}
+                    <div class=" flex gap-4">
                     <a href="{{ route('admin.create') }}"
                        class="inline-flex items-center justify-center gap-2
                               bg-blue-600 hover:bg-blue-500
@@ -56,7 +57,20 @@
 
                         Create Post
                     </a>
+                    <a href="{{ route('posts.trash') }}"
+                       class="inline-flex items-center justify-center gap-1
+                              bg-red-600 hover:bg-red-500
+                              text-white font-semibold
+                              px-5 py-3 rounded-xl
+                              shadow-lg shadow-blue-600/20
+                              transition-all duration-200
+                              hover:-translate-y-0.5">
 
+                        <i data-lucide="Trash-2" class="w-5 h-5"></i>
+
+                       Trash
+                    </a>
+                    </div>
                 </div>
 
             </div>

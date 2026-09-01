@@ -14,6 +14,9 @@ Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth',
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('trash',[PostController::class,'trash'])->name('posts.trash');
+    Route::delete('force-delete/{id}',[PostController::class,'delete'])->name('posts.force-delete');
+    Route::get('restore/{id}',[PostController::class,'restore'])->name('posts.restore');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');

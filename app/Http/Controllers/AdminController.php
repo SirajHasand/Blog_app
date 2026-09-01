@@ -127,10 +127,18 @@ class AdminController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Post $admin)
-    {
-        unlink('upload/'.$admin->image);
-        $admin->delete();
+{
+    if ($admin->image) {
+        $imagePath = 'upload/' . $admin->image;
 
-        return redirect()->route('dashboard')->with('success', 'Post deleted successfully.');
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
     }
+
+    $admin->delete();
+
+    return redirect()->route('dashboard')
+        ->with('success', 'Post deleted successfully.');
+}
 }

@@ -21,7 +21,7 @@ class PostFactory extends Factory
             // 'title', 'content','image','slug'
             'title' => fake()->sentence(),
             'content' => fake()->paragraph(),
-            'image' => 'cover.jpg',
+            'image' => 'portfilio.png',
             'slug' => Str::slug(fake()->sentence()) 
         ];
     }
