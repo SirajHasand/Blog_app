@@ -23,11 +23,16 @@ class DatabaseSeeder extends Seeder
     {
     
         Post::factory(10)->create();
+        $this->call(
+            [
+                UserSeeder::class
+            ]
+        );
 
         // Post::factory(10)->create();
         // User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-    }
-}
+    // }
+}}
