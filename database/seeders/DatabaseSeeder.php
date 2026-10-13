@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
         Post::factory(10)->create();
         $this->call(
             [
-                UserSeeder::class
+                UserSeeder::class,
+                SettingSeeder::class
             ]
         );
 
