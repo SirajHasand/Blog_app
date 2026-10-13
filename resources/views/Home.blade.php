@@ -320,6 +320,7 @@
         <p class="text-blue-100 max-w-xl mx-auto mb-7">
             Explore more articles and follow along as I share
             my development journey, projects and lessons learned.
+            
         </p>
 
         <a href="{{ route('post') }}"
@@ -335,8 +336,10 @@
             <i data-lucide="arrow-right"
                class="w-5 h-5">
             </i>
+            
 
         </a>
+        
 
     </div>
 
