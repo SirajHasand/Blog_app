@@ -4,11 +4,18 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
+use App\Http\Middleware\SettingMiddleware;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/post', [PostController::class, 'index'])->name('post');
-Route::get('/post/{slug}', [PostController::class, 'show'])->name('show');
+
+
+Route::middleware(SettingMiddleware::class)->group(function(){
+    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/post', [PostController::class, 'index'])->name('post');
+    Route::get('/post/{slug}', [PostController::class, 'show'])->name('show');
+
+});
 
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -24,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/edit/{admin}', [AdminController::class, 'edit'])->name('admin.edit');
     Route::put('/admin/update/{admin}', [AdminController::class, 'update'])->name('admin.update');
     Route::delete('/admin/delete/{admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
+    Route::get('setting',[SettingController::class,'index'])->name('setting.index');
+    Route::post('setting',[SettingController::class,'store'])->name('setting.store');
     
 });
 

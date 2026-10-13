@@ -232,7 +232,8 @@
                            font-bold
                            text-white">
 
-                    Admin
+                    
+                    <div>Yousuf Hasand</div>
 
                 </h3>
 

@@ -52,7 +52,13 @@
                             text-white font-black
                             shadow-lg shadow-blue-500/20">
 
-                    M
+                    @if ($setting && $setting->logo)
+                        <img
+                            src="{{ asset('upload/' . $setting->logo) }}"
+                            alt="Company Logo"
+                            class=" w-auto rounded-lg h-9 object-cover"
+                        >
+                    @endif
 
                 </div>
 
@@ -327,9 +333,9 @@
                               hover:text-white
                               transition">
 
-                        <i data-lucide="github"
-                           class="w-5 h-5">
-                        </i>
+                        <span 
+                           class="w-5 h-5">Gh
+                        </span>
 
                     </a>
 
@@ -342,9 +348,23 @@
                               hover:text-white
                               transition">
 
-                        <i data-lucide="linkedin"
-                           class="w-5 h-5">
-                        </i>
+                        <span 
+                           class="w-5 h-5">ln
+                        </span>
+
+                    </a>
+                    <a href="#"
+                       class="w-1/2
+                              flex items-center justify-center
+                              rounded-lg
+                              bg-white/5
+                              hover:bg-blue-600
+                              hover:text-white
+                              transition">
+
+                        <dev 
+                           class="w-5 h-5">{{$setting->phone}}
+                        </dev>
 
                     </a>
 
