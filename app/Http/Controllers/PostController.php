@@ -10,7 +10,7 @@ class PostController extends Controller
    public function index(){
          return view('Post')
         ->with('page',"Post")
-        ->with('posts',Post::paginate(6));
+        ->with('posts',Post::orderBy('created_at','DESC')->paginate(6));
         
     }
     public function show($slug)  {
