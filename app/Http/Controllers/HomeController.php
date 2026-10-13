@@ -9,7 +9,7 @@ class HomeController extends Controller
         $page = 'Home';
         return view('home')
         ->with('page', $page)
-        ->with('posts', Post::paginate(3));
+        ->with('posts', Post::orderBy('created_at','DESC')->paginate(3));
 
     }
 
