@@ -1,23 +1,35 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
+use App\Http\Middleware\Localization;
 use App\Http\Middleware\SettingMiddleware;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-
-
+Route::middleware(Localization::class)->group(function(){
+Route::get('/test',function(){
+    return User::whereHas('profile')->with('profile')->firstOrFail()->profile;
+});
+Route::get('/users',[UserController::class,'index'])->name('users');
 Route::middleware(SettingMiddleware::class)->group(function(){
-    Route::get('/', [HomeController::class, 'index']);
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/post', [PostController::class, 'index'])->name('post');
     Route::get('/post/{slug}', [PostController::class, 'show'])->name('show');
 
 });
 
 Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/locale/{locale}',function($locale){
+        app()->setlocale($locale);
+        Session()->put('locale',$locale);
+        return redirect()->route('home');
+    })->name('locale');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -35,5 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::post('setting',[SettingController::class,'store'])->name('setting.store');
     
 });
+});  
 
 require __DIR__.'/auth.php';
