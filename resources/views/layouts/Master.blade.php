@@ -102,7 +102,7 @@
                               hover:bg-white/5
                           @endif">
 
-                    Home
+                    {{ __('nav.home' )}}
 
                 </a>
 
@@ -119,9 +119,32 @@
                               hover:bg-white/5
                           @endif">
 
-                    Articles
+                    {{ __('nav.articles' )}}
 
                 </a>
+                <!-- Settings Dropdown -->
+            <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                            
+
+                            <div class="ms-1">
+                                <i  data-lucide="Languages" class="w-5 h-5"></i>
+                            </div>
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+                        <x-dropdown-link :href="route('locale',['locale'=>'en'])">
+                            {{ __('nav.english') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('locale',['locale'=>'pa']) ">
+                            {{ __('nav.pashto') }}
+                        </x-dropdown-link>
+                    </x-slot>
+                </x-dropdown>
+            </div>
 
             </nav>
 
@@ -139,7 +162,7 @@
                               hover:text-white
                               transition">
 
-                        Login
+                        {{ __('nav.login' )}}
 
                     </a>
 
@@ -154,7 +177,7 @@
                               transition
                               shadow-lg shadow-blue-600/20">
 
-                        Get Started
+                        {{ __('nav.get_started' )}}
 
                     </a>
 
@@ -175,7 +198,7 @@
                            class="w-4 h-4">
                         </i>
 
-                        Dashboard
+                        {{ __('nav.dashboard' )}}
 
                     </a>
 
@@ -276,23 +299,24 @@
                     <a href="/"
                        class="block hover:text-white transition">
 
-                        Home
+                       {{ __('nav.home' )}} 
 
                     </a>
 
                     <a href="{{ route('post') }}"
                        class="block hover:text-white transition">
 
-                        Articles
+                        {{ __('nav.articles' )}} 
 
                     </a>
+                    
 
                     @guest
 
                         <a href="{{ route('login') }}"
                            class="block hover:text-white transition">
 
-                            Login
+                            {{ __('nav.login' )}}
 
                         </a>
 
@@ -301,7 +325,7 @@
                         <a href="{{ route('dashboard') }}"
                            class="block hover:text-white transition">
 
-                            Dashboard
+                            {{ __('nav.dashboard' )}}
 
                         </a>
 
@@ -318,7 +342,7 @@
                 <h3 class="text-white
                            font-semibold mb-4">
 
-                    Connect
+                    {{ __('nav.contact' )}}
 
                 </h3>
 
