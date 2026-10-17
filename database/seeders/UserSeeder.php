@@ -20,5 +20,12 @@ class UserSeeder extends Seeder
         );
 
         $user->profile()->firstOrCreate([], ['user_pic' => '']);
+    }{
+        $user = User::firstOrCreate(
+            ['email' => 'admin@example.com'],
+            ['name' => 'admin', 'password' => 'admin@123']
+        );
+
+        $user->profile()->firstOrCreate([], ['user_pic' => '']);
     }
 }
