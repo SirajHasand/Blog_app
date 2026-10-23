@@ -14,6 +14,9 @@ class User extends Authenticatable
         // return $this->hasOne(Profile::class);
 
     }
+    public function posts(){
+        return $this->hasManyThrough(Post::class,Profile::class);
+    }
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
