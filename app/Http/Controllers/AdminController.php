@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Faker\Core\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Str;
 use function Laravel\Prompts\title;
 
@@ -17,7 +19,7 @@ class AdminController extends Controller
     {
         return view('dashboard')
         ->with('page',"Admin")
-        ->with('posts',Post::all());
+        ->with('posts',User::find(Auth::user()->id)->posts);
     }
 
     /***  Show the form for creating a new resource.
@@ -36,7 +38,8 @@ class AdminController extends Controller
         $request->validate([
             'title' => 'required|string|max:255|unique:posts,title|',
             'content' => 'required|string|max:5000',
-            'image' => 'required|image'
+            'image' => 'required|image',
+            
         ],
         [
             'title.required' => 'The title field is required.',
@@ -58,7 +61,8 @@ class AdminController extends Controller
             'title' => $request->input('title'),
             'content' => $request->input('content'),
             'image'=> $image_new_name,
-            'slug' => Str::slug($request->title)
+            'slug' => Str::slug($request->title),
+            'profile_id' => Auth::user()->profile->id
         ]);
         return redirect()->route('dashboard')->with('success', 'Post created successfully.');
     }
