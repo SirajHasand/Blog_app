@@ -8,12 +8,14 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Middleware\Localization;
 use App\Http\Middleware\SettingMiddleware;
+use App\Models\Post;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(Localization::class)->group(function(){
 Route::get('/test',function(){
-    return User::whereHas('profile')->with('profile')->firstOrFail()->profile;
+    return User::find(2)->posts;
 });
 Route::get('/users',[UserController::class,'index'])->name('users');
 Route::middleware(SettingMiddleware::class)->group(function(){
@@ -45,6 +47,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/delete/{admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::get('setting',[SettingController::class,'index'])->name('setting.index');
     Route::post('setting',[SettingController::class,'store'])->name('setting.store');
+    Route::get('/admin/registerNewUser',[UserController::class, 'registerNewUser'])->name('registerNewUser');
+    Route::post('/admin/storeUser',[UserController::class, 'storeUser'])->name('storeUser');
+
     
 });
 });  
