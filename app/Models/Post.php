@@ -10,5 +10,9 @@ class Post extends Model
 {
     use HasFactory;
     use SoftDeletes;    
-    protected $fillable = ['title', 'content','image','slug'];
+    protected $fillable = ['title', 'content','image','slug','profile_id'];
+
+    public function profile(){
+        return $this->belongsTo(Profile::class);
+    }
 }
