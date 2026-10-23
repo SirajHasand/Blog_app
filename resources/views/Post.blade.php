@@ -233,7 +233,7 @@
                            text-white">
 
                     
-                    <div>Yousuf Hasand</div>
+                    <div>{{$post->profile->user->name}}</div>
 
                 </h3>
 
