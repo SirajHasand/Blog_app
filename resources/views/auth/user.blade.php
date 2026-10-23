@@ -13,7 +13,7 @@
 
                     {{--  Button --}}
                     <div class=" flex gap-4">
-                    <a href="{{ route('login') }}"
+                    <a href="{{ route('registerNewUser') }}"
                        class="inline-flex items-center justify-center gap-2
                               bg-blue-600 hover:bg-blue-500
                               text-white font-semibold
@@ -24,7 +24,7 @@
 
                         <i data-lucide="plus" class="w-5 h-5"></i>
 
-                        Create Post
+                        Create New User
                     </a>
                     
                     </div>
@@ -49,7 +49,7 @@
                         <p class="text-sm text-green-400/80">
                             {{ session('success') }}
                         </p>
-                    </div>
+                </div>
             </div>
 
             <div class="hidden sm:flex items-center gap-2 text-sm text-gray-400">
@@ -135,6 +135,12 @@
                                            uppercase tracking-wider">
                                     Password
                                 </th>
+                                <th class="px-6 py-4
+                                           text-xs font-semibold
+                                           text-gray-500
+                                           uppercase tracking-wider">
+                                    Image
+                                </th>
 
                                 
 
@@ -208,25 +214,29 @@
 
 
                                     {{-- Password --}}
-                                    <td class="px-6 py-5">
+                                    <td class="px-6 py-5 max-w-md">
 
-                                        <span class="inline-flex items-center gap-1.5
-                                                     px-3 py-1
-                                                     rounded-full
-                                                     text-xs font-medium
-                                                     bg-green-500/10
-                                                     text-green-400">
+                                        <p class="text-sm text-gray-400 truncate">
 
-                                            <span class="w-1.5 h-1.5
-                                                         rounded-full
-                                                         bg-green-400">
-                                            </span>
 
-                                            {{$user->password_needs_rehash}}
+                                            {{$user->password}}
 
                                         </span>
 
                                     </td>
+                                    {{-- Email --}}
+                                    <td class="px-6 py-5 max-w-md">
+
+                                        <p class="text-sm text-gray-400 truncate">
+
+                                            {{$user->profile->user_pic}}
+
+                                        </p>
+
+                                    </td>
+
+                                    </tbody>
+
 
 
 </form>
