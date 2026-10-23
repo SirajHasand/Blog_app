@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
+             $table->text('slug')->nullable();
+             $table->unsignedBigInteger('profile_id');
             $table->timestamps();
             
         });
