@@ -96,7 +96,7 @@
 
                             </label>
                             <input type="text"
-                            name="Password"
+                            name="password"
                             class="w-full
                                            pl-10 pr-4 py-3
                                            bg-gray-950
@@ -135,6 +135,20 @@
                                            focus:outline-none
                                            transition"
                             >
+
+                      <div class="p-6 space-y-6">
+                        <div>
+                            <label for="role"
+                                   class="block text-sm font-medium text-gray-300 mb-2">
+                                Role
+                            </label>
+                            <select name="role"
+                                    class="w-full pl-10 pr-4 py-3 bg-gray-950 border border-gray-700 rounded-xl text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition">
+                                <option value="editor">Editor</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                      </div>
                             <button
                             type="submit"
 
