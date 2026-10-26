@@ -40,12 +40,15 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
-                        <x-dropdown-link :href="route('setting.index')">
-                            {{ __('Setting') }}
-                        </x-dropdown-link>
-                        <x-dropdown-link :href="route('users')">
-                            {{ __('Users') }}
-                        </x-dropdown-link>
+                        
+                        @if(Auth::user()->isAdmin())
+                            <x-dropdown-link :href="route('setting.index')">
+                                {{ __('Setting') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="route('users')">
+                                {{ __('Users') }}
+                            </x-dropdown-link>
+                        @endif
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -95,9 +98,11 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('setting.index')">
-                    {{ __('Setting') }}
-                </x-responsive-nav-link>
+                @if(Auth::user()->isAdmin())
+                    <x-responsive-nav-link :href="route('setting.index')">
+                        {{ __('Setting') }}
+                    </x-responsive-nav-link>
+                @endif
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
