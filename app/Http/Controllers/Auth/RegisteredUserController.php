@@ -41,6 +41,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'editor',
         ]);
         $profile = new Profile();
         $profile->user_id = $user->id;
