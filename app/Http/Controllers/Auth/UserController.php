@@ -7,6 +7,7 @@ use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -16,14 +17,17 @@ class UserController extends Controller
         ->with('users',User::all());
     }
     function registerNewUser(){
+        Gate::authorize('manage-users');
         return view('admin.registerNewUser');
     }
     function storeUser(Request $request){
+        Gate::authorize('manage-users');
         $user = new User();
 
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->role = $request->input('role', 'editor');
     
         $user->save();
         $profile = new Profile();
