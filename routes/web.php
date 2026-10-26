@@ -17,7 +17,7 @@ Route::middleware(Localization::class)->group(function(){
 Route::get('/test',function(){
     return User::find(2)->posts;
 });
-Route::get('/users',[UserController::class,'index'])->name('users');
+Route::get('/users',[UserController::class,'index'])->name('users')->middleware('admin');
 Route::middleware(SettingMiddleware::class)->group(function(){
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/post', [PostController::class, 'index'])->name('post');
@@ -47,8 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/delete/{admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::get('setting',[SettingController::class,'index'])->name('setting.index');
     Route::post('setting',[SettingController::class,'store'])->name('setting.store');
-    Route::get('/admin/registerNewUser',[UserController::class, 'registerNewUser'])->name('registerNewUser')->middleware('can:manage-users');
-    Route::post('/admin/storeUser',[UserController::class, 'storeUser'])->name('storeUser')->middleware('can:manage-users');
+    Route::get('/admin/registerNewUser',[UserController::class, 'registerNewUser'])->name('registerNewUser')->middleware(['admin','can:manage-users']);
+    Route::post('/admin/storeUser',[UserController::class, 'storeUser'])->name('storeUser')->middleware(['admin','can:manage-users']);
 
     
 });
