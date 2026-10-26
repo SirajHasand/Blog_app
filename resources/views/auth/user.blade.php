@@ -119,6 +119,13 @@
                                            text-xs font-semibold
                                            text-gray-500
                                            uppercase tracking-wider">
+                                    Role
+                                </th>
+
+                                <th class="px-6 py-4
+                                           text-xs font-semibold
+                                           text-gray-500
+                                           uppercase tracking-wider">
                                     Name
                                 </th>
 
@@ -166,6 +173,11 @@
 
                                     </td>
 
+
+                                    {{-- Role --}}
+                                    <td class="px-6 py-5">
+                                        <span class="text-sm text-gray-400">{{ $user->role }}</span>
+                                    </td>
 
                                     {{-- Name --}}
                                     <td class="px-6 py-5">
