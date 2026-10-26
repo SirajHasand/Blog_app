@@ -47,8 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/admin/delete/{admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
     Route::get('setting',[SettingController::class,'index'])->name('setting.index');
     Route::post('setting',[SettingController::class,'store'])->name('setting.store');
-    Route::get('/admin/registerNewUser',[UserController::class, 'registerNewUser'])->name('registerNewUser');
-    Route::post('/admin/storeUser',[UserController::class, 'storeUser'])->name('storeUser');
+    Route::get('/admin/registerNewUser',[UserController::class, 'registerNewUser'])->name('registerNewUser')->middleware('can:manage-users');
+    Route::post('/admin/storeUser',[UserController::class, 'storeUser'])->name('storeUser')->middleware('can:manage-users');
 
     
 });
