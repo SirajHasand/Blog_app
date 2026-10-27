@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
     
+        // Create one post via factory, then call the user and setting seeders
         Post::factory(1)->create();
         $this->call(
             [
