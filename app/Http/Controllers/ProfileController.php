@@ -11,8 +11,9 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
+    /*
+     * Display the user's profile edit form.
+     * Passes the currently authenticated user ($request->user()) to the view.
      */
     public function edit(Request $request): View
     {
@@ -21,8 +22,10 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
+    /*
      * Update the user's profile information.
+     * Uses ProfileUpdateRequest for validation. If the email changed,
+     * email_verified_at is reset to null so the user must re-verify.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
@@ -37,8 +40,11 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
-    /**
+    /*
      * Delete the user's account.
+     * Validates the current password, logs the user out, deletes the user record,
+     * then invalidates the session and regenerates the CSRF token so the
+     * destroyed session cannot be reused.
      */
     public function destroy(Request $request): RedirectResponse
     {
