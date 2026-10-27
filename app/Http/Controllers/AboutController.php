@@ -12,6 +12,7 @@ class AboutController extends Controller
      */
     public function index(){
         $page = 'About';
+        // Render the about view with page title
         return view('about')->with('page',$page);
     }
 }
