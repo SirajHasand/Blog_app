@@ -12,6 +12,7 @@ class GuestLayout extends Component
      */
     public function render(): View
     {
+        // Render the guest layout view used for unauthenticated pages
         return view('layouts.guest');
     }
 }
