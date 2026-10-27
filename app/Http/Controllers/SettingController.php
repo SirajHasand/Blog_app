@@ -18,7 +18,6 @@ class SettingController extends Controller
             'setting' => Setting::first(),
         ]);
     }
-
     /*
      * Save site settings (logo, phone, facebook).
      * Handles logo upload, deletes the old logo file if replaced, and

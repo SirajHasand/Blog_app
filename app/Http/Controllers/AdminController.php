@@ -23,7 +23,6 @@ class AdminController extends Controller
         ->with('page',"Admin")
         ->with('posts',User::find(Auth::user()->id)->posts);
     }
-
     /*
      * Show the form for creating a new post.
      */
