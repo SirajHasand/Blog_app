@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\File;
 
 class SettingController extends Controller
 {
+    /*
+     * Show the site settings page.
+     * Loads the first settings record from the database and passes it to the view.
+     */
     public function index()
     {
         return view('setting', [
@@ -15,6 +19,11 @@ class SettingController extends Controller
         ]);
     }
 
+    /*
+     * Save site settings (logo, phone, facebook).
+     * Handles logo upload, deletes the old logo file if replaced, and
+     * updates phone / facebook in the database.
+     */
     public function store(Request $request)
     {
         // 1. Validate the submitted data
