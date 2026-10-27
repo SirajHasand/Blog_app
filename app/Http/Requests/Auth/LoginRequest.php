@@ -81,6 +81,7 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
+        // Build a unique throttle key from the user's email and IP address
         return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
     }
 }
