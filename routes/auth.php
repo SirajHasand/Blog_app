@@ -11,6 +11,10 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
+/*
+ * Guest-only routes (not logged in): registration, login, and password reset.
+ * The 'guest' middleware redirects already-authenticated users away.
+ */
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
@@ -35,6 +39,10 @@ Route::middleware('guest')->group(function () {
         ->name('password.store');
 });
 
+/*
+ * Auth-required routes (logged in): email verification and password management.
+ * Verification routes are rate-limited with throttle to prevent abuse.
+ */
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
