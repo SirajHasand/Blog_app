@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create the users table with name, email and password text columns
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->text("name");
