@@ -22,7 +22,8 @@ class PostFactory extends Factory
             'title' => fake()->sentence(),
             'content' => fake()->paragraph(),
             'image' => 'demo.jpeg',
-            'slug' => Str::slug(fake()->sentence()) 
+            // Generate a URL-friendly slug from a fake sentence
+            'slug' => Str::slug(fake()->sentence())
         ];
     }
 }
