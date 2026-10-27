@@ -14,9 +14,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(Localization::class)->group(function(){
-Route::get('/test',function(){
-    return User::find(2)->posts;
-});
+// Route::get('/test',function(){
+//     return User::find(2)->posts;
+// });
 Route::get('/users',[UserController::class,'index'])->name('users')->middleware('admin');
 Route::middleware(SettingMiddleware::class)->group(function(){
     Route::get('/', [HomeController::class, 'index'])->name('home');
