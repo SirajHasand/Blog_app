@@ -11,15 +11,28 @@ use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
+    /*
+     * Show the users listing page.
+     * Loads all users via User::all() and passes them to the auth.user view.
+     */
     function index(){
         return view('auth.user')
         ->with('page',"Users")
         ->with('users',User::all());
     }
+    /*
+     * Show the admin "register new user" form.
+     * Authorizes that the user has the 'manage-users' ability via Gate.
+     */
     function registerNewUser(){
         Gate::authorize('manage-users');
         return view('admin.registerNewUser');
     }
+    /*
+     * Store a new user account.
+     * Authorizes 'manage-users', creates the User with hashed password and role,
+     * then creates a linked Profile record with the uploaded image.
+     */
     function storeUser(Request $request){
         Gate::authorize('manage-users');
         $user = new User();
