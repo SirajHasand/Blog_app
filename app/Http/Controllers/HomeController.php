@@ -12,6 +12,7 @@ class HomeController extends Controller
      */
     public function index(){
         $page = 'Home';
+        // Render the home view with page title and paginated posts
         return view('home')
         ->with('page', $page)
         ->with('posts', Post::orderBy('created_at','DESC')->paginate(3));
