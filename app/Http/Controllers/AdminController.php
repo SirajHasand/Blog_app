@@ -31,7 +31,6 @@ class AdminController extends Controller
         return view('Admin.Create')
         ->with('page',"Create Post");
     }
-
     /*
      * Store a newly created post.
      * Validates title, content and image, moves the uploaded image to the
@@ -63,6 +62,7 @@ class AdminController extends Controller
             $image->move('upload',$image_new_name);
         }
 
+        // Insert the new post record into the database
         Post::create([
             'title' => $request->input('title'),
             'content' => $request->input('content'),
