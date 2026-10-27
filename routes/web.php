@@ -58,14 +58,14 @@ Route::middleware(Localization::class)->group(function(){
     Route::middleware('auth')->group(function () {
         // Show / edit the logged-in user's profile
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        // Show soft-deleted posts (trash bin)
-        Route::get('trash',[PostController::class,'trash'])->name('posts.trash');
-        // Permanently delete a post by ID
-        Route::delete('force-delete/{id}',[PostController::class,'delete'])->name('posts.force-delete');
-        // Restore a soft-deleted post by ID
-        Route::get('restore/{id}',[PostController::class,'restore'])->name('posts.restore');
-        // Update profile info (PATCH)
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Show soft-deleted posts (trash bin)
+    Route::get('trash',[PostController::class,'trash'])->name('posts.trash');
+    // Permanently delete a post by ID (force delete)
+    Route::delete('force-delete/{id}',[PostController::class,'delete'])->name('posts.force-delete');
+    // Restore a soft-deleted post by ID
+    Route::get('restore/{id}',[PostController::class,'restore'])->name('posts.restore');
+    // Update profile info (PATCH)
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         // Delete the logged-in user's account
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         // Show the create-post form
@@ -78,10 +78,10 @@ Route::middleware(Localization::class)->group(function(){
         Route::put('/admin/update/{admin}', [AdminController::class, 'update'])->name('admin.update');
         // Delete a post
         Route::delete('/admin/delete/{admin}', [AdminController::class, 'destroy'])->name('admin.destroy');
-        // Show site settings page
-        Route::get('setting',[SettingController::class,'index'])->name('setting.index');
-        // Save site settings (logo, phone, facebook)
-        Route::post('setting',[SettingController::class,'store'])->name('setting.store');
+    // Show site settings page
+    Route::get('setting',[SettingController::class,'index'])->name('setting.index');
+    // Save site settings (logo, phone, facebook)
+    Route::post('setting',[SettingController::class,'store'])->name('setting.store');
         // Admin-only user management routes (also require the 'manage-users' ability)
         Route::get('/admin/registerNewUser',[UserController::class, 'registerNewUser'])->name('registerNewUser')->middleware(['admin','can:manage-users']);
         Route::post('/admin/storeUser',[UserController::class, 'storeUser'])->name('storeUser')->middleware(['admin','can:manage-users']);
