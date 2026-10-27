@@ -16,6 +16,7 @@ class SettingSeeder extends Seeder
     
     public function run(): void
     {
+        // Insert the default site settings record
         Setting::Create(['phone'=>'0773380002','logo'=>'portfilio.png','facebook'=>'https://facebook/sirajhasand']);
     }
 }
