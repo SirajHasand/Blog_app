@@ -45,6 +45,7 @@ Route::middleware(Localization::class)->group(function(){
     Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
     // Language switcher: stores chosen locale in session and redirects home
+    // Language switcher: stores chosen locale in session and redirects home
     Route::get('/locale/{locale}',function($locale){
         app()->setlocale($locale);
         Session()->put('locale',$locale);
