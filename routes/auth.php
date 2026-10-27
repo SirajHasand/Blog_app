@@ -16,16 +16,19 @@ use Illuminate\Support\Facades\Route;
  * The 'guest' middleware redirects already-authenticated users away.
  */
 Route::middleware('guest')->group(function () {
+    // Register and login routes are only available to guests (not logged in users)
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
+    // Login form and authentication handler
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
+    // Password reset link request: email input and link sending
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
 
@@ -47,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 
+    // Verify the email using the signed URL and hash, throttled to 6 requests per minute
     Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
         ->middleware(['signed', 'throttle:6,1'])
         ->name('verification.verify');
