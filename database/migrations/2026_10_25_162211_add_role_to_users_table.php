@@ -8,6 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
+        // Add a role column (default 'editor') to the users table after password
         Schema::table('users', function (Blueprint $table) {
             $table->string('role')->default('editor')->after('password');
         });
