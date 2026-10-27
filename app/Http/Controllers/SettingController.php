@@ -55,6 +55,7 @@ class SettingController extends Controller
         }
 
         // 4. Update other settings
+        // Save the phone number and facebook url to the settings record
         $setting->phone = $validated['phone'];
         $setting->facebook = $validated['facebook'] ?? null;
 
