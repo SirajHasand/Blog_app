@@ -12,6 +12,7 @@ class ContactController extends Controller
      */
     public function index(){
         $page = 'Contact';
+        // Render the contact view with page title
         return view('contact')->with('page',$page);
     }
 }
