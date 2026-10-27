@@ -9,6 +9,6 @@ class Note extends Model
     use HasFactory;  
      protected $table = 'table_notes'; 
     //table_notes = the name of the table in the database that this model represents.
+    // 'note' is the only mass-assignable column in the table_notes table
     protected $fillable = ['note'];
-    // note , the column name in the database table that we want to fill.
 }
