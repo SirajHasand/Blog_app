@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
     use HasFactory;
-    use SoftDeletes;    
+    use SoftDeletes; // enables soft deletes so posts can be restored instead of permanently removed
     protected $fillable = ['title', 'content','image','slug','profile_id'];
 
     public function profile(){

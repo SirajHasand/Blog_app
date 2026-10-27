@@ -55,6 +55,7 @@ class User extends Authenticatable
         ];
     }
 
+    // Returns true only when the user's role is exactly 'admin'
     public function isAdmin(): bool
     {
         return $this->role === 'admin';
