@@ -12,8 +12,10 @@ use function Laravel\Prompts\title;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
+    /*
+     * Show the admin dashboard.
+     * Loads the dashboard view and passes the currently authenticated user's posts
+     * (User::find(Auth::user()->id)->posts).
      */
     public function index()
     {
@@ -22,7 +24,8 @@ class AdminController extends Controller
         ->with('posts',User::find(Auth::user()->id)->posts);
     }
 
-    /***  Show the form for creating a new resource.
+    /*
+     * Show the form for creating a new post.
      */
     public function create()
     {
@@ -30,7 +33,11 @@ class AdminController extends Controller
         ->with('page',"Create Post");
     }
 
-    /** Store a newly created resource in storage.
+    /*
+     * Store a newly created post.
+     * Validates title, content and image, moves the uploaded image to the
+     * upload folder with a unique name, generates a slug from the title,
+     * and links the post to the authenticated user's profile.
      */
     public function store(Request $request)
     {
@@ -67,8 +74,8 @@ class AdminController extends Controller
         return redirect()->route('dashboard')->with('success', 'Post created successfully.');
     }
 
-    /**
-     * Display the specified resource.
+    /*
+     * Display the specified resource (not implemented).
      */
     public function show(string $id)
     {
@@ -76,8 +83,9 @@ class AdminController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
+    /*
+     * Show the form for editing a post.
+     * Route model binding injects the Post instance ($admin).
      */
     public function edit(Post $admin)
     {
@@ -88,8 +96,11 @@ class AdminController extends Controller
     }
 
 
-    /**
-     * Update the specified resource in storage.
+    /*
+     * Update the specified post in storage.
+     * Validates title and content (unique title excludes the current post id).
+     * If a new image is uploaded, the old image file is unlinked from disk and
+     * replaced; then the post title, content and slug are updated.
      */
     public function update(Request $request, Post $admin)
     {
@@ -127,8 +138,10 @@ class AdminController extends Controller
         return redirect()->route('dashboard')->with('success', 'Post updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
+    /*
+     * Remove the specified post from storage.
+     * Deletes the post's image file from disk if it exists, then soft-deletes
+     * the post record and redirects back to the dashboard.
      */
     public function destroy(Post $admin)
 {
