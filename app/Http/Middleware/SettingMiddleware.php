@@ -16,6 +16,7 @@ class SettingMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // Share the first settings record with all views as the 'setting' variable
         \View::share('setting',Setting::first());
         return $next($request);
     }
