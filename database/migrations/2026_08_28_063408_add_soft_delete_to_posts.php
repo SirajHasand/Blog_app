@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Add soft deletes (deleted_at column) to the posts table
         Schema::table('posts', function (Blueprint $table) {
             $table->softDeletes();
         });

@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create the settings table for site-wide configuration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->integer("phone");
