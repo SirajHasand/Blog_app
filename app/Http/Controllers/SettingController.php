@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\File;
 
 class SettingController extends Controller
 {
-    /*
-     * Show the site settings page.
-     * Loads the first settings record from the database and passes it to the view.
-     */
     public function index()
     {
         return view('setting', [

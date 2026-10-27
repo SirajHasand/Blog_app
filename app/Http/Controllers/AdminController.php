@@ -73,8 +73,8 @@ class AdminController extends Controller
         return redirect()->route('dashboard')->with('success', 'Post created successfully.');
     }
 
-    /*
-     * Display the specified resource (not implemented).
+    /**
+     * Display the specified resource.
      */
     public function show(string $id)
     {
