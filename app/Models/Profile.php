@@ -8,6 +8,7 @@ class Profile extends Model
 {
     protected $table = 'profile';
 
+    // A profile belongs to a single user
     public function user(){
         return $this->belongsTo(User::class);
     }
