@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create the profile table linking a user to their profile picture
         Schema::create('profile', function (Blueprint $table) {
             $table->id();
             $table->text('user_pic');
