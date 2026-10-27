@@ -18,6 +18,7 @@ class VerifyEmailController extends Controller
             return redirect()->intended(route('dashboard', absolute: false).'?verified=1');
         }
 
+        // Mark the user's email as verified and fire the Verified event
         if ($request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
         }
