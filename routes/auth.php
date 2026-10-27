@@ -48,6 +48,7 @@ Route::middleware('guest')->group(function () {
  * Verification routes are rate-limited with throttle to prevent abuse.
  */
 Route::middleware('auth')->group(function () {
+    // Show the email verification notice page for unverified users
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 
