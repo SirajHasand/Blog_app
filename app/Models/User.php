@@ -25,6 +25,7 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+    // Fields that can be mass-assigned when creating or updating a user
     protected $fillable = [
         'name',
         'email',
