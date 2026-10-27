@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create the posts table with title, content, slug and profile reference
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
