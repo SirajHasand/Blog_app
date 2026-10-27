@@ -24,6 +24,7 @@ class ProfileUpdateRequest extends FormRequest
                 'lowercase',
                 'email',
                 'max:255',
+                // Ensure email is unique except for the current user's own record
                 Rule::unique(User::class)->ignore($this->user()->id),
             ],
         ];
