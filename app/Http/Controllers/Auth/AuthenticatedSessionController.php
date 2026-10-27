@@ -26,6 +26,7 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        // Regenerate the session ID to prevent session fixation after login
         $request->session()->regenerate();
 
         return redirect()->intended(route('dashboard', absolute: false));
