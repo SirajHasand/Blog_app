@@ -24,6 +24,7 @@ class PostController extends Controller
     public function show($slug)  {
         
     $post = Post::where('slug',$slug)->first();
+         // Render the single post view with the found post data
          return view('show')
          ->with('page',"Post")
          ->with('post',$post);
