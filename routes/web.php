@@ -53,9 +53,7 @@ Route::middleware(Localization::class)->group(function(){
     })->name('locale');
 
 
-    /*
-     * Every route below requires an authenticated user ('auth' middleware).
-     */
+    // Every route below requires an authenticated user ('auth' middleware).
     Route::middleware('auth')->group(function () {
         // Show / edit the logged-in user's profile
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
