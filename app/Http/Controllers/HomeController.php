@@ -5,6 +5,11 @@ use App\Models\Post;
 
 class HomeController extends Controller
 {
+    /*
+     * Show the homepage.
+     * Passes the page title and the latest posts (newest first, paginated to 3)
+     * to the home view.
+     */
     public function index(){
         $page = 'Home';
         return view('home')
