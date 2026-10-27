@@ -13,6 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Add the nullable image column to the posts table
         Schema::table('posts', function (Blueprint $table) {
             $table->text('image')->nullable();
            
