@@ -131,6 +131,15 @@
     - this will trancate our table in DB:
     *  `Post::trancate()` 
 
-have many functions for diffrent purposes.
+## Laravel Query Builder:
+ * *if we have already table in db, not created by laravel migration, and want to get data from it we use Qurey Builder*
+   * like : 
+     * `DB::table('tableName')->get()`
+     * it will reture data with out using model
+   * *can be use many class*
+     * `DB::table('tableName')->where('id',3)->get()`
+   * *to select a specific col*
+     * `DB::table('tableName')->pluck('title')`
+  - it have many functions for diffrent purposes.
   
 
