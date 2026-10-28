@@ -159,3 +159,7 @@
    -  `return $this->hasOne(Profile::class,'refrence col name','user id name');`
    -  `}`
    - Note : *if the refrence col name is user_id and user id name col is id you can ignoore it writing here*
+   -
+   -
+
+   -
