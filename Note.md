@@ -117,3 +117,10 @@
   * *create route and restor function*
     * `$post = Post::withTrashed()->where('id')->first()`
     * `$post->forceDelete()`
+
+  ### Restore
+  * *create route and restor function*
+    * `$post = Post::withTrashed()->where('id')->first()`
+    * `$post->restore()`
+
+
