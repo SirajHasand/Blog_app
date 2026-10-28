@@ -142,4 +142,8 @@
      * `DB::table('tableName')->pluck('title')`
   - it have many functions for diffrent purposes.
   
+  ## laravel Middlewares:
+   *  *createing middlware:*
+   *  `php artisan make:middleware SettingMiddleware`
+   
 
