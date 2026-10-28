@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Role;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,11 +15,16 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create the admin user if not present, then ensure a profile exists for them
+        $adminRole = Role::where('name', 'admin')->first();
+
         $user = User::firstOrCreate(
             ['email' => 'admin@example.com'],
-            ['name' => 'admin', 'password' => 'admin@123']
+            ['name' => 'admin', 'password' => 'admin@123', 'role_id' => $adminRole?->id]
         );
+
+        if (!$user->role_id && $adminRole) {
+            $user->update(['role_id' => $adminRole->id]);
+        }
 
         $user->profile()->firstOrCreate([], ['user_pic' => '']);
     }
