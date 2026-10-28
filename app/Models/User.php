@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -11,43 +10,42 @@ class User extends Authenticatable
 {
     public function profile(){
         return $this->hasOne(Profile::class,'user_id','id');
-        // return $this->hasOne(Profile::class);
-
     }
+
     public function posts(){
         return $this->hasManyThrough(Post::class,Profile::class);
     }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function roles()
+    {
+        return $this->morphToMany(Role::class, 'model', 'model_has_roles');
+    }
+
+    public function permissions()
+    {
+        return $this->morphToMany(Permission::class, 'model', 'model_has_permissions');
+    }
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    // Fields that can be mass-assigned when creating or updating a user
     protected $fillable = [
         'name',
         'email',
         'password',
-        'role',
+        'role_id',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
@@ -56,9 +54,19 @@ class User extends Authenticatable
         ];
     }
 
-    // Returns true only when the user's role is exactly 'admin'
     public function isAdmin(): bool
     {
-        return $this->role === 'admin';
+        return optional($this->role)->name === 'admin';
+    }
+
+    public function hasRole(string $role): bool
+    {
+        return $this->roles->contains('name', $role);
+    }
+
+    public function hasPermission(string $permission): bool
+    {
+        return $this->permissions->contains('name', $permission)
+            || $this->role?->permissions->contains('name', $permission) === true;
     }
 }
