@@ -146,4 +146,16 @@
    *  *createing middlware:*
    *  `php artisan make:middleware SettingMiddleware`
    
-
+  ## Laravel Eloquent 
+  ### one-to-one relationship
+   - *two way to have create relationship*f
+   1. *if you want to have relationship in db, between tables ,by using laravel*
+   - *in migration you can write:*
+   -  ` $table->unsignedBigInteger('user_id');`
+   -  `$table->foreign('user_id')->references('id')->on('users');`
+  2. *creating relationship in model of learavel,not in db between tablesl*
+   -  *in user model:*
+   -  `public function profile(){`
+   -  `return $this->hasOne(Profile::class,'refrence col name','user id name');`
+   -  `}`
+   - Note : *if the refrence col name is user_id and user id name col is id you can ignoore it writing here*
