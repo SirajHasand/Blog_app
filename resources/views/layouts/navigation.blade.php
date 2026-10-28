@@ -18,6 +18,14 @@
                     <x-nav-link :href="route('post')" :active="request()->routeIs('posts.index')">
                         {{ __('Posts') }}
                     </x-nav-link>
+                    @if(Auth::user()->isAdmin())
+                        <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.*')">
+                            {{ __('Roles') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('users')" :active="request()->routeIs('users')">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -44,9 +52,6 @@
                         @if(Auth::user()->isAdmin())
                             <x-dropdown-link :href="route('setting.index')">
                                 {{ __('Setting') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('users')">
-                                {{ __('Users') }}
                             </x-dropdown-link>
                         @endif
 
@@ -85,6 +90,14 @@
             <x-responsive-nav-link :href="route('post')" :active="request()->routeIs('post')">
                 {{ __('Posts') }}
             </x-responsive-nav-link>
+            @if(Auth::user()->isAdmin())
+                <x-responsive-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.*')">
+                    {{ __('Roles') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('users')" :active="request()->routeIs('users')">
+                    {{ __('Users') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

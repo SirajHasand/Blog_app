@@ -233,7 +233,7 @@
                            text-white">
 
                     
-                    <div>{{$post->profile->user->name}}</div>
+                    <div>{{$post->profile?->user?->name ?? 'Unknown'}}</div>
 
                 </h3>
 
