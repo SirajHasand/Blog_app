@@ -10,7 +10,7 @@ class AdminMiddleware
 {
     /**
      * Handle an incoming request.
-     *
+     *this the middlewre that checks if the user is an admin before allowing access to certain routes.
      * @param  Closure(Request): (Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
