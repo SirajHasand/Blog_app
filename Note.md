@@ -123,4 +123,14 @@
     * `$post = Post::withTrashed()->where('id')->first()`
     * `$post->restore()`
 
+## Laravel Tinker 
+* *it is use to intract with db directly from cmd larvel*
+  * for use thinker, run in cmd :
+    * `php artisan tinker`
+  * then can commond like :
+    - this will trancate our table in DB:
+    *  `Post::trancate()` 
+
+have many functions for diffrent purposes.
+  
 
