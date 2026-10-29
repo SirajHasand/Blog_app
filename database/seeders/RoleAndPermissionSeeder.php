@@ -2,42 +2,44 @@
 
 namespace Database\Seeders;
 
-use App\Models\Permission;
-use App\Models\Role;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
+// Seeder to create default roles and permissions
 class RoleAndPermissionSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
+        // Define all permissions in the system
         $permissions = [
-            'post create',
-            'post update',
-            'post delete',
-            'post restore',
-            'post view',
-            'user create',
-            'user update',
-            'user delete',
-            'user view',
-            'role manage',
+            'post create',   // Create posts
+            'post update',   // Update posts
+            'post delete',   // Delete posts
+            'post restore',  // Restore deleted posts
+            'post view',     // View posts
+            'user create',   // Create users
+            'user update',   // Update users
+            'user delete',   // Delete users
+            'user view',     // View users
+            'role manage',   // Manage roles and permissions
         ];
 
+        // Create permissions if they don't exist
         foreach ($permissions as $name) {
             Permission::firstOrCreate(['name' => $name]);
         }
 
+        // Create admin role with all permissions
         $admin = Role::firstOrCreate(['name' => 'admin']);
-        $admin->permissions()->sync(Permission::all()->pluck('id'));
+        $admin->syncPermissions(Permission::all());
 
-        $editor = Role::firstOrCreate(['name' => 'editor']);
-        $editor->permissions()->sync(Permission::whereIn('name', [
-            'post view', 'post create', 'post update', 'post delete', 'post restore',
-        ])->pluck('id'));
-
-        $author = Role::firstOrCreate(['name' => 'author']);
-        $author->permissions()->sync(Permission::whereIn('name', [
-            'post view', 'post create',
-        ])->pluck('id'));
+        // Create user role with limited permissions
+        $user = Role::firstOrCreate(['name' => 'user']);
+        $user->syncPermissions(['post create', 'post view']);
     }
 }
