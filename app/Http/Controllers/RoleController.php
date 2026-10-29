@@ -10,6 +10,7 @@ class RoleController extends Controller
 {
     public function index()
     {
+        // Retrieve all roles with their associated permissions
         $roles = Role::with('permissions')->get();
         return view('Admin.roles.index')
             ->with('page', 'Roles')
