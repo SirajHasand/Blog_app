@@ -32,7 +32,7 @@ Route::middleware(Localization::class)->group(function(){
         Session()->put('locale',$locale);
         return redirect()->route('home');
     })->name('locale');
-    // these routes is authorized
+    // these routes is authorized 
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::get('trash',[PostController::class,'trash'])->name('posts.trash')->middleware('permission:post view');
