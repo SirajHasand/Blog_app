@@ -81,7 +81,7 @@
                           backdrop-blur-md
                           transition-all duration-300">
 
-                    Latest Posts
+                    Latest Posts 
 
                     <i data-lucide="arrow-down" class="w-4 h-4"></i>
 

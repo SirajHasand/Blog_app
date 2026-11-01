@@ -9,7 +9,7 @@
 </h1>
 
 <p class="text-gray-700">
-    If you have any questions, feel free to reach out to us!
+    If you have any questions, feel free to reach out to us! 
 </p>
 
 @endsection

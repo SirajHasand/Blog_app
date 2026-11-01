@@ -9,7 +9,7 @@
 </h1>
 
 <p class="text-gray-700">
-    This is the About page of our Laravel application.
+    This is the About page of our Laravel application.  
 </p>
 
 @endsection

@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="min-h-screen bg-gray-950 py-10" >
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-         {{-- Page Header --}}
+         {{-- Page Header qq--}}
             <div class="mb-8">
 
                 <div class="flex items-center gap-3">
