@@ -2,7 +2,9 @@
 
  
 
-
+    {{--
+     this is the create post page for the admin panel. It allows the admin to create a new post by filling in the title, uploading an image, and writing the content. The form is styled with Tailwind CSS and includes validation error messages for each field.
+    --}}
     {{-- Main Content --}}
     <div class="min-h-screen bg-gray-950 py-10">
 
