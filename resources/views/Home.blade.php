@@ -35,7 +35,7 @@
                 Welcome to My Blog
             </div>
 
-            {{-- Heading --}}
+            {{-- Heading  -- --}}
             <h1 class="text-4xl md:text-6xl lg:text-7xl font-black
                        tracking-tight text-white leading-tight mb-6">
 
