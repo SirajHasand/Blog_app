@@ -21,7 +21,7 @@
     </x-slot>
 
 
-    {{-- Main Content --}}
+    {{-- Main Content -- --}}
     
     <form action="{{ route('setting.store') }}"
                       method="POST"
