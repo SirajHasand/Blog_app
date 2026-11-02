@@ -19,6 +19,7 @@ class PostController extends Controller
     }
     /*
      * Show a single post by its slug.
+     * post controller
      * Looks up the post where the slug column matches the $slug parameter.
      */
     public function show($slug)  {
