@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    {{-- Header   
+    {{-- -- Header   
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <div>
