@@ -7,6 +7,7 @@ use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+// this controller is responsible for handling API requests related to the Post resource. It provides methods for listing, creating, showing, updating, and deleting posts. The controller uses the Post model to interact with the database and the PostResource to format the response data for API consumers.
 class PostController extends Controller
 {
     /**
