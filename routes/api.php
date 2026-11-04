@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+// api.php files where you can define your API routes. These routes are loaded by the RouteServiceProvider within a group which is assigned the "api" middleware group. Enjoy building your API!
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
