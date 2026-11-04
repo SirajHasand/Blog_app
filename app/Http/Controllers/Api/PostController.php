@@ -24,7 +24,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        
+
     }
 
     /**
@@ -32,7 +33,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = Post::create(
+            [
+                'title' => $request->title,
+                'content' => $request->content,
+                'slug' => $request->slug,
+                'profile_id' => 3,
+            ]
+        );
+        // Return the newly created post as a resource
+        return $post;       
+
     }
 
     /**
