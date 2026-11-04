@@ -9,7 +9,9 @@ class PostResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
-     *
+     *thies resource is used to format the data of a Post model instance 
+     *into a structured array for API responses. 
+     * It includes the post's ID, title, creation time (formatted as a human-readable difference), and slug.
      * @return array<string, mixed>
      */
     public function toArray(Request $request): array
@@ -18,7 +20,8 @@ class PostResource extends JsonResource
             'id'=> $this->id,
             'title' => $this->title,
             'created_at' => $this->created_at->diffForHumans(),
-            'slug' => $this->slug  
+            'slug' => $this->slug ,
+            'profile' => ProfileRecource::make($this->profile->user),
         ];
     }
 }
