@@ -19,9 +19,9 @@ class PostResource extends JsonResource
         return [
             'id'=> $this->id,
             'title' => $this->title,
-            'created_at' => $this->created_at->diffForHumans(),
+            'created_at' => $this->created_at ? $this->created_at->diffForHumans() : null,
             'slug' => $this->slug ,
-            'profile' => ProfileRecource::make($this->profile->user),
+            'profile' => $this->profile ? ProfileRecource::make($this->profile->user) : null,
         ];
     }
 }
