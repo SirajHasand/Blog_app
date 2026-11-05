@@ -12,7 +12,7 @@ class PostCreateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +23,19 @@ class PostCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string'],
+        ];
+    
+        
+    }
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'The title field is required.',
+            'content.required' => 'The content field is required.',
+            'slug.required' => 'The slug field is required.',
+            'slug.unique' => 'The slug must be unique.',
         ];
     }
-}
+} 
