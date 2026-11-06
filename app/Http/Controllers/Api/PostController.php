@@ -88,6 +88,7 @@ class PostController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * this controller is fo post
      */
     public function destroy(string $id)
     {
